@@ -23,17 +23,17 @@
     margin: 5px;
 }
 
-.audioImg{
+#audioImg{
     cursor: pointer;
     margin: 5px;
 }
 
-.defImg{
+#defImg{
     cursor: pointer;
     margin: 5px;
 }
 
-.chaperonDef{
+#chaperonDef{
     font-size: medium;
     background-color: aliceblue;
     color: red;
