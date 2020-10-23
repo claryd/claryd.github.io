@@ -1,0 +1,40 @@
+.content{
+    display: flex;
+    flex-direction: column;
+    margin: 200px;
+    align-items: center;
+    font-size: large;
+}
+
+.title-content{
+    align-items: center;
+}
+
+.chaperon:hover {
+    cursor: pointer;
+    background: yellow;
+}
+
+.mainTip{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 5px;
+}
+
+.audioImg{
+    cursor: pointer;
+    margin: 5px;
+}
+
+.defImg{
+    cursor: pointer;
+    margin: 5px;
+}
+
+.chaperonDef{
+    font-size: medium;
+    background-color: aliceblue;
+    color: red;
+}

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="./proto.css">
+    <script type="text/javascript" src="./proto.js"></script>
+
+    <title>Prototype</title>
+    <!-- On peut avoir d'autres méta-données ici -->
+</head>
+
+<body>
+    <div class="content">
+        <h1 class="content__title">I</h1>
+        <p class="content__text">
+            Il était une fois une petite fille de village, la plus jolie qu'on eût su voir ; sa mère en était folle, et
+            sa mère-grand plus folle encore. Cette bonne femme lui fit faire un petit <a id="chaperon"
+                class="chaperon">chaperon</a>
+            rouge, qui lui seyait si
+            bien que partout on l'appelait le petit <a id="chap2" class="chaperon">Chaperon</a> rouge. Un jour sa mère,
+            ayant cuit et fait des galettes, lui dit : « Va voir comme se porte ta mère-grand, car on m'a dit qu'elle
+            était malade, porte-lui une galette et ce petit pot de beurre. » Le petit <a id="chap3"
+                class="chaperon">Chaperon</a> rouge partit aussitôt
+            pour aller chez sa mère-grand, qui demeurait dans un autre village. En passant dans un bois elle rencontra
+            compère le loup, qui eut bien envie de la manger ; mais il n'osa, à cause de quelques bûcherons qui étaient
+            dans la forêt. Il lui demanda où elle allait ; la pauvre enfant, qui ne savait pas qu'il est dangereux de
+            s'arrêter à écouter un loup, lui dit : « Je vais voir ma mère-grand, et lui porter une galette avec un petit
+            pot de beurre que ma mère lui envoie. »
+        </p>
+    </div>
+    <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
+    <script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script>
+    <script src="https://code.createjs.com/1.0.0/soundjs.min.js"></script>
+    <script>
+
+        //sound lib
+        var audioPath = "./assets/chaperon.mp3";
+        var sound = "sound";
+        createjs.Sound.registerSound(audioPath, sound);
+
+        function playSound() {
+            createjs.Sound.play(sound);
+        }
+
+        let elements = document.getElementsByClassName('chaperon');
+
+        for (let chaperon of elements) {
+            // For "chaperon"
+            var mainTip = document.createElement("div");
+            mainTip.setAttribute('class', 'mainTip');
+            mainTip.setAttribute('id', 'mainTip')
+
+            // Audio tool
+            var audioContent = document.createElement('div');
+            var audioImg = document.createElement('img');
+            audioImg.src = 'data:image/png;base64,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';
+            audioImg.setAttribute('width', '40');
+            audioImg.setAttribute('class', 'audioImg');
+            audioImg.addEventListener('mouseover', playSound);
+
+            audioContent.appendChild(audioImg);
+            mainTip.appendChild(audioContent);
+
+            // Definition tool
+            var defContent = document.createElement('div');
+            var defImg = document.createElement('img');
+            defImg.src = "data:image/png;base64,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";
+            defImg.setAttribute('width', '40');
+            defImg.setAttribute('class', 'defImg');
+
+            defImg.addEventListener("mouseover", function () {
+                var chaperonDef = document.createElement('div');
+                chaperonDef.textContent = 'Capuchon';
+                chaperonDef.setAttribute('class', 'chaperonDef');
+                document.getElementById('mainTip').appendChild(chaperonDef);
+            });
+
+            defImg.addEventListener("mouseleave", function () {
+                defImg.setAttribute('width', '40');
+
+                document.getElementById('chaperonDef').remove();
+            });
+
+            defContent.appendChild(defImg);
+
+            let id = "#" + chaperon.id;
+
+            mainTip.appendChild(defContent);
+            tippy(id, {
+                content: mainTip,
+                interactive: true,
+                allowHTML: true
+            })
+        }
+
+
+
+
+        ;</script>
+</body>
+
+</html>
